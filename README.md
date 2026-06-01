@@ -230,7 +230,7 @@ sudo usermod -aG i2c $USER
 
 ```bash
 # 1. Clonar o repositório / Clone the repository
-git clone https://github.com/PP5PK/xlx_oled.git
+git clone https://github.com/PP5PK/XLX_NanoHat-OLED.git
 cd xlx_oled
 
 # 2. Copiar o script / Copy the script
