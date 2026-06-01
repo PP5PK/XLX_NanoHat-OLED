@@ -236,7 +236,7 @@ cd xlx_oled
 # 2. Copiar o script / Copy the script
 sudo cp xlx_oled.py /opt/xlx_oled.py
 
-# 3. Instalar como serviço / Install as service
+# 3. Copiar o arquivo do serviço / Copy the service file
 sudo cp xlx-oled.service /etc/systemd/system/
 
 # 4. Editar as configurações / Edit configuration
