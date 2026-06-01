@@ -1,0 +1,16 @@
+[Unit]
+Description=XLX Reflector OLED Monitor (PP5PK)
+After=network.target xlxd.service
+BindsTo=xlxd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/xlx_oled.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SupplementaryGroups=i2c gpio
+
+[Install]
+WantedBy=multi-user.target xlxd.service
