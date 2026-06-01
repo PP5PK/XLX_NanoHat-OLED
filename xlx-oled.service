@@ -1,6 +1,6 @@
 [Unit]
 Description=XLX Reflector OLED Monitor (PP5PK)
-After=network.target xlxd.service
+After=xlxd.service
 BindsTo=xlxd.service
 
 [Service]
