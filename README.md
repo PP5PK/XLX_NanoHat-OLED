@@ -236,7 +236,10 @@ cd xlx_oled
 # 2. Copiar o script / Copy the script
 sudo cp xlx_oled.py /opt/xlx_oled.py
 
-# 3. Editar as configurações / Edit configuration
+# 3. Instalar como serviço / Install as service
+sudo cp xlx-oled.service /etc/systemd/system/
+
+# 4. Editar as configurações / Edit configuration
 sudo nano /opt/xlx_oled.py
 ```
 
@@ -247,47 +250,22 @@ Adjust the variables in the `CONFIG` section to match your environment:
 ```python
 XLX_LOG_FILE    = "/var/log/xlx.log"   # caminho do log do XLXD / XLXD log path
 MY_CALLSIGN     = "PP5PK"              # seu indicativo / your callsign
-REFLECTOR_NAME  = "XLXBRA"            # nome do reflector / reflector name
+REFLECTOR_NAME  = "XLXBRA"             # nome do reflector / reflector name
 ```
 
 ```bash
-# 4. Testar manualmente / Test manually
+# 5. Testar manualmente / Test manually
 sudo python3 /opt/xlx_oled.py
 
-# 5. Instalar como serviço / Install as service
-sudo cp xlx-oled.service /etc/systemd/system/
+# 6. Iniciar o serviço / Start the service
 sudo systemctl daemon-reload
-sudo systemctl enable xlx-oled
-sudo systemctl start xlx-oled
+sudo systemctl enable --now xlx-oled
 
-# 6. Verificar / Verify
+# 7. Verificar status do serviço / Verify service status
 sudo systemctl status xlx-oled
+
+# 8. Acompanhar atividade / Track activity
 journalctl -u xlx-oled -f
-```
-
----
-
-## Serviço systemd / systemd Service
-
-Arquivo `xlx-oled.service`:
-
-```ini
-[Unit]
-Description=XLX Reflector OLED Monitor (PP5PK)
-After=network.target xlxd.service
-Wants=xlxd.service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/python3 /opt/xlx_oled.py
-Restart=on-failure
-RestartSec=10
-StandardOutput=journal
-StandardError=journal
-SupplementaryGroups=i2c gpio
-
-[Install]
-WantedBy=multi-user.target
 ```
 
 ---
@@ -347,4 +325,4 @@ GPL-3.0 — veja o arquivo [LICENSE](LICENSE).
 
 ---
 
-73 de / 73 de **PP5PK** · Mafra, Santa Catarina, Brasil 🇧🇷
+73 de **PP5PK** · Mafra, Santa Catarina, Brazil 🇧🇷
