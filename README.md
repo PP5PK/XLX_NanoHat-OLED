@@ -321,7 +321,7 @@ GPIO access is done via **sysfs** (`/sys/class/gpio`), with no dependency on lib
 
 ## Licença / License
 
-GPL-3.0 — veja o arquivo [LICENSE](LICENSE).
+Released under the **The Unlicense** License. See [`LICENSE`](LICENSE) for details.
 
 ---
 
